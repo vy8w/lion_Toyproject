@@ -1,0 +1,113 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 2%;
+  margin: 0;
+}
+
+.container {
+  width: 50vw;
+  margin: 0 auto; /* 정가운데 정렬 */
+}
+
+header {
+  display: flex;
+  justify-content: center; /* 정가운데 정렬 코드1 */
+  align-items: center; /* 정가운데 정렬 코드2 */
+  padding: 15px 0;
+}
+header .backCalendar {
+  /* border: 1px solid red; */
+  transform: translateX(-140px);
+}
+header .backCalendar a {
+  text-decoration: none;
+  color: skyblue;
+}
+
+.content {
+  display: flex; /* 정가운데 정렬 코드1 */
+  justify-content: center; /* 정가운데 정렬 코드2 */
+  align-items: center; /* 정가운데 정렬 코드3 */
+  padding: 15px 0;
+  background: rgba(243, 243, 243, 0.8);
+}
+.content #emojiBtn {
+  border-radius: 20px;
+  padding: 3px 20px;
+  background: rgb(203, 239, 253);
+  border: 0 solid rgb(203, 239, 253);
+  align-items: center;
+  transform: translateX(-10%);
+}
+.content #emojiBtn:hover {
+  cursor: pointer;
+}
+.content textarea {
+  border-radius: 20px;
+  padding: 20px;
+  transform: translateX(10%);
+  border: solid skyblue;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#toDoList {
+    background: rgba(243, 243, 243, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  #toDo {
+    width: 300px;
+    padding: 5px;
+    margin-bottom: 10px;
+    font-size: 15px;
+  }
+  
+  #addButton {
+    padding: 5px 10px;
+    font-size: 13px;
+    margin-left: auto;
+  }
+  
+  #toDoList > div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  #toDoList > div > input[type="checkbox"] > button {
+    margin-right: 5px;
+    margin-left: auto;
+  }
+
+  #toDoList > div > input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
+  #toDoList > div > button {
+    padding: 5px 10px;
+    font-size: 13px;
+    background-color: #ff6161;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+  }
