@@ -1,0 +1,193 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f0f0f0;
+  background-image: url('../img/watercolor.png');
+  background-size : cover;
+}
+
+.backCalendar {
+  margin: 0 auto;
+  padding-top: 50px;
+  max-width: 1300px;
+  height:30px;
+}
+
+.backCalendar img {
+    width: 200px;
+    padding-bottom: 70px;
+}
+.backCalendar .fa-calendar {
+    padding-top: 30px;
+    padding-right:15px;
+    color: #7791cb;
+    float: right;
+}
+
+.topContainer {
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+.bottomContainer {
+    margin-bottom: 100px;
+}
+.containerTodo {
+  margin: 0 auto;
+  max-width: 1300px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.containerDiary {
+    margin: 0 auto;
+  max-width: 1300px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+.containerTodo h1 {
+  text-align: center;
+}
+
+.containerDiary h1 {
+  text-align: center;
+}
+
+.containerTodo .smallBtn {
+  border: #fff;
+  float: right;
+}
+
+#removeB {
+    padding-right: 5px;
+}
+#editB {
+    padding-right: 20px;
+}
+#completeB {
+    padding-right: 20px;
+}
+.containerDiary #emojiBtn {
+  width: 30px;
+  height: 30px;
+  background-color: rgba(54, 198, 255, 0);
+  font-size: 30px;
+  line-height: 20px;
+  border: #fff;
+}
+.containerDiary #emojiBtn:hover {
+  cursor: pointer;
+}
+.containerTodo .blueBtn {
+  width: 100%;
+  padding: 10px;
+  background-color: #7791cb;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.containerDiary .blueBtn {
+  width: 100%;
+  padding: 10px;
+  background-color: #7791cb;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.containerDiary #width_container {
+  position: relative;
+}
+.containerDiary #width_container textarea {
+  width: 100%;
+}
+.containerDiary #width_container ul {
+  position: relative;
+  list-style-type: none;
+  padding: 0;
+}
+.containerDiary #width_container ul li {
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+}
+
+.containerDiary #width_container ul li:nth-child(even) {
+    background-color: #dde5fc;
+}
+
+.containerDiary #width_container ul li:nth-child(odd) {
+    background-color: #f2f5ff;
+}
+
+.todo_objects li {
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+}
+
+.todo_objects li:nth-child(even) {
+    background-color: #dde5fc;
+}
+
+.todo_objects li:nth-child(odd) {
+    background-color: #f2f5ff;
+}
+
+.containerDiary #width_container ul .deleteButton {
+  position: absolute;
+  right: 10px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: #818181;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.deleteButton:after {
+  display: inline-block;
+  content: "\00d7";
+  font-size:15pt;
+}
+
+.todo_objects {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todoPost {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.todoContent {
+  flex-grow: 1;
+}
+
+.todoContainer ul li {
+    padding-left: 10px;
+    width:100%;
+}
+
+.completed .todoContent {
+    text-decoration: line-through;
+    color: #a9a9a9;
+}
+
+
+
+
+

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💗 HighFive Calender 💗</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Questrial&display=swap');
+
+        body { background-color : #7791cb; }
+
+        img {
+        width: 230px;
+        padding-top: 10px;
+        padding-bottom: 20px;
+        display: block;
+        margin: 0 auto;
+    }
+
+        .calenderContainer {
+
+            margin: 0 auto 100px;
+            background-color : white;
+            height: 720px;
+            width: 700px;
+            padding: 30px;
+            border-radius:5px;
+            box-shadow:0px 40px 30px -20px rgba(0,0,0,0.3);
+        }
+
+        td {
+            padding-top: 15px;
+            width: 130px;
+            height: 50px;
+        }
+
+        .Calendar {
+            text-align: center;
+        }
+
+        .Calendar>thead>tr:first-child>td {
+            font-family: 'Questrial', sans-serif;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .Calendar>thead>tr:last-child>td {
+            font-family: 'Questrial', sans-serif;
+            font-weight: 600;
+        }
+
+        .Calendar>tbody>tr>td>p {
+            font-family: 'Montserrat', sans-serif;
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            transition-duration: .2s;
+
+            line-height: 59px;
+            margin-top: 5px;
+            margin-right: 10px;
+            margin-left: 19px;
+            display: block;
+            text-align: center;
+        }
+
+        .pastDay {
+            color: lightgray;
+        }
+
+        .today {
+            background-color: #f2f5ff;
+            color: #7791cb;
+            font-weight: 1000;
+            cursor: pointer;
+        }
+
+        .futureDay {
+            background-color: #FFFFFF;
+            cursor: pointer;
+        }
+        .futureDay:hover{
+            background:#eee;
+        }
+
+        .futureDay.choiceDay,
+        .today.choiceDay {
+            background: #7791cb;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+
+    </style>
+
+    <script>
+        window.onload = function () { buildCalendar(); }
+
+        let nowMonth = new Date();
+        let today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+
+        function buildCalendar() {
+
+            let firstDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth(), 1);
+            let lastDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth() + 1, 0);
+
+            let tbody_Calendar = document.querySelector(".Calendar > tbody");
+            document.getElementById("calYear").innerText = nowMonth.getFullYear();
+            document.getElementById("calMonth").innerText = leftPad(nowMonth.getMonth() + 1);
+
+            while (tbody_Calendar.rows.length > 0) {
+                tbody_Calendar.deleteRow(tbody_Calendar.rows.length - 1);
+            }
+
+            let nowRow = tbody_Calendar.insertRow();
+
+            for (let j = 0; j < firstDate.getDay(); j++) {
+                let nowColumn = nowRow.insertCell();
+            }
+
+            for (let nowDay = firstDate; nowDay <= lastDate; nowDay.setDate(nowDay.getDate() + 1)) {
+
+                let nowColumn = nowRow.insertCell();
+
+
+                let newDIV = document.createElement("p");
+                newDIV.innerHTML = leftPad(nowDay.getDate());
+                nowColumn.appendChild(newDIV);
+
+                if (nowDay.getDay() == 6) {
+                    nowRow = tbody_Calendar.insertRow();
+                }
+
+                if (nowDay < today) {
+                    newDIV.className = "pastDay";
+                }
+                else if (nowDay.getFullYear() == today.getFullYear() && nowDay.getMonth() == today.getMonth() && nowDay.getDate() == today.getDate()) {
+                    newDIV.className = "today";
+                    newDIV.onclick = function () { choiceDate(this); }
+                }
+                else {
+                    newDIV.className = "futureDay";
+                    newDIV.onclick = function () { choiceDate(this); }
+                }
+            }
+        }
+
+        function choiceDate(newDIV) {
+            if (document.getElementsByClassName("choiceDay")[0]) {
+                document.getElementsByClassName("choiceDay")[0].classList.remove("choiceDay");
+            }
+            newDIV.classList.add("choiceDay");
+
+
+
+            let selectedDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth(), parseInt(newDIV.innerHTML));
+            let year = selectedDate.getFullYear();
+            let month = selectedDate.getMonth() + 1;
+            let day = selectedDate.getDate();
+            let formattedDate = `${year}-${leftPad(month)}-${leftPad(day)}`;
+
+            window.location.href = {% url 'todo_diary' %};
+        }
+
+
+        function prevCalendar() {
+            nowMonth = new Date(nowMonth.getFullYear(), nowMonth.getMonth() - 1, nowMonth.getDate());
+            buildCalendar();
+        }
+
+        function nextCalendar() {
+            nowMonth = new Date(nowMonth.getFullYear(), nowMonth.getMonth() + 1, nowMonth.getDate());
+            buildCalendar();
+        }
+
+
+        function leftPad(value) {
+            if (value < 10) {
+                value = "0" + value;
+                return value;
+            }
+            return value;
+        }
+
+
+    </script>
+</head>
+
+<body>
+<img src="/static/img/teamLogo_B.png" alt="">
+
+<div class="calenderContainer">
+    <table class="Calendar">
+        <thead>
+        <tr>
+            <td onClick="prevCalendar();" style="cursor:pointer;">&#60;</td>
+            <td colspan="5">
+                <span id="calYear"></span>년
+                <span id="calMonth"></span>월
+            </td>
+            <td onClick="nextCalendar();" style="cursor:pointer;">&#62;</td>
+        </tr>
+        <tr>
+            <td>일</td>
+            <td>월</td>
+            <td>화</td>
+            <td>수</td>
+            <td>목</td>
+            <td>금</td>
+            <td>토</td>
+        </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

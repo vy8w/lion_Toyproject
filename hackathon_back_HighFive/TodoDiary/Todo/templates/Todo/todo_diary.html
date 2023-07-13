@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💗 HighFive Todo&Diary 💗</title>
+    <link rel="stylesheet" type="text/css" href="{% static './css/style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{% static './js/index.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.0.3/dist/index.min.js"></script>
+    <script src="https://kit.fontawesome.com/1ae82cd2be.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<div class="backCalendar">
+    <img src="/static/img/teamLogo_NB.png" alt="">
+    <a href="{% url 'todo_calender' %}">
+        <i class="fa-regular fa-calendar fa-3x"></i>
+    </a>
+</div>
+<div class="topContainer">
+    <div class="containerTodo">
+        <h1>TODO LIST</h1><br>
+        <div class="todoContainer">
+            <button type="button" class="blueBtn" data-toggle="modal" data-target="#myModal">추가</button>
+            <hr>
+            <ul class="todo_objects">
+                {% for todo in todos %}
+                <li class="todoPost{% if todo.complete %} completed {% endif %}">
+                    <div class="todoContent">{{ todo.list }}</div>
+                    <div class="btnContainer">
+                        <a type="button" class="smallBtn" id="removeB" href="{% url 'todo_remove' pk=todo.pk %}">
+                            <i class="fa-solid fa-trash-can fa-lg"></i>
+                        </a>
+                        <a type="button" class="smallBtn" data-toggle="modal" id="editB"
+                                data-target="#editModal{{ todo.pk }}">
+                            <i class="fa-solid fa-pencil fa-lg"></i>
+                        </a>
+                        <a type="button" class="smallBtn" id="completeB" href="{% url 'todo_complete' pk=todo.pk %}">
+                            <i class="fa-solid fa-check fa-lg"></i>
+                        </a>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h3 class="modal-title">투두 추가하기</h3>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="{% url 'todo_post' %}">
+                            {% csrf_token %}
+                            <div class="form-row">
+                                <div class="col">
+                                    {{ form.list }}
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <p></p>
+                                <div class="col text-right">
+                                    <button type="submit" class="btn btn-primary">등록</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% for todo in todos %}
+        <div class="modal fade" id="editModal{{ todo.pk }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h3 class="modal-title">투두 수정하기</h3>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="{% url 'todo_edit' todo.pk %}">
+                            {% csrf_token %}
+                            <div class="form-row">
+                                <div class="col">
+                                    <input type="text" name="list" class="form-control" value="{{ todo.list }}">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <p></p>
+                                <div class="col text-right">
+                                    <button type="submit" class="btn btn-primary">수정</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="bottomContainer">
+    <div class="containerDiary">
+        <h1>TODAY
+            <button id="emojiBtn">😊</button>
+        </h1>
+        <br>
+        <div id="width_container">
+            <textarea name="daily" style="resize:none" id="todoInput" rows="4" placeholder="오늘의 한 줄"></textarea>
+            <button type="button" id="addButton" class="blueBtn">+</button>
+            <hr>
+            <ul id="todoList"></ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
