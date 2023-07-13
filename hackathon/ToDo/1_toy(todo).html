@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily</title>
+    <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.0.3/dist/index.min.js"></script>
+    <link rel="stylesheet" href="1_toy(todo).css">
+    <script src="https://kit.fontawesome.com/1ae82cd2be.js" crossorigin="anonymous"></script>
+    <!-- <script src="1_toy_todo_button.js">button</script> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="backCalendar">
+                <a href="../1_toy(calender).html">
+                    <i class="fa-regular fa-calendar-days fa-2xl"></i>
+                </a>
+            </div>
+        </header>
+
+
+        <div id="toDoList">
+            <h1>To Do List</h1>
+            <!-- <input id="toDo" type="text"> -->
+            <!-- <button id="addButton">추가</button> -->
+            <button id="addButton" type="button" data-toggle="modal" data-target="#myModal">추가</button>
+                <div>
+                    <input type="checkbox">
+                    <span>sample</span>
+                    <button id="modButton" type="button" data-toggle="modal" data-target="#myModal">수정</button>
+                    <button>삭제</button>
+                </div>
+        </div>
+
+        <div class="title">
+            <h1>Today</h1>
+        </div>
+        <div class="content">
+            <button id="emojiBtn">Emotion</button>
+            <textarea name="daily" id="daily" cols="35" rows="2"></textarea>
+        </div>
+<!-- 부트스트랩의 모달 창을 사용할려면 아래의 class 이름들을 그대로 사용해야 한다. 변경하면 모양이 달라진다.-->
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog"> <!-- 사용자 지정 부분① : id명 -->
+    <div class="modal-dialog">
+    
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h4 class="modal-title">모달 창 타이틀</h4> <!-- 사용자 지정 부분② : 타이틀 -->
+        </div>
+        <div class="modal-body">
+          <p>여기에 필요한 텍스트 메시지 넣기</p> <!-- 사용자 지정 부분③ : 텍스트 메시지 -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="modal fade" id="myModal" role="dialog"> <!-- 사용자 지정 부분① : id명 -->
+    <div class="modal-dialog">
+    
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h4 class="modal-title">모달 창 타이틀</h4> <!-- 사용자 지정 부분② : 타이틀 -->
+        </div>
+        <div class="modal-body">
+          <p>여기에 필요한 텍스트 메시지 넣기</p> <!-- 사용자 지정 부분③ : 텍스트 메시지 -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    <script>
+        const button = document.querySelector('#emojiBtn');
+        const picker = new EmojiButton({
+            position: 'bottom-start'
+        });
+
+        button.addEventListener('click', () => {
+            picker.togglePicker(button);
+        });
+        
+        picker.on('emoji', emoji => {
+            const text_box = document.querySelector('#daily');
+            text_box.value += emoji;
+        });
+        
+/*  
+//ToDoList javascript
+        document.addEventListener('DOMContentLoaded', () => {
+            const toDo = document.querySelector('#toDo')
+            const addButton = document.querySelector('#addButton')
+            const toDoList = document.querySelector('#toDoList')
+
+            addButton.addEventListener('click', (event) => {
+                const item = document.createElement('div') // div
+
+                const checkBox = document.createElement('input') // 완료
+                checkBox.setAttribute('type','checkbox')
+
+
+                const text = document.createElement('span') // 내용
+                text.textContent = toDo.value
+
+                //const removeButton = document.createElement('button') // 삭제
+                //removeButton.textContent = '삭제'
+
+
+                removeButton.addEventListener('click', (event) => {
+                    event.currentTarget.parentNode.parentNode.removeChild(event.currentTarget.parentNode)
+        })
+
+                checkBox.addEventListener('change', (event) => {
+                    if(checkBox.checked){
+                        text.style.textDecorationLine = "line-through"
+                    }else{
+                        text.style.textDecorationLine = "none"
+                    }
+                })
+                        
+                item.appendChild(checkBox)
+                item.appendChild(text)
+                item.appendChild(removeButton)
+
+                toDoList.appendChild(item)
+                toDo.value = ''
+                })
+        })
+     */
+    </script>
+</body>
+</html>

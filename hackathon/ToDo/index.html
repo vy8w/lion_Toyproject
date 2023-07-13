@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TODAY</title>
+    <link rel="stylesheet" href="Todo.css">
+    <link rel="stylesheet" href="1_toy(todo).css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="Todo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.0.3/dist/index.min.js"></script>
+    <script src="https://kit.fontawesome.com/1ae82cd2be.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div class="backCalendar">
+        <a href="1_toy(calender).html">
+            <i class="fa-regular fa-calendar-days fa-2xl"></i>
+        </a>
+    </div>
+
+<!-- 부트스트랩의 모달 창을 사용할려면 아래의 class 이름들을 그대로 사용해야 한다. 변경하면 모양이 달라진다.-->
+<!-- Modal -->
+<div class="container">
+    <div id="toDoList">
+        <h1>To Do List</h1>
+        <!-- <input id="toDo" type="text"> -->
+        <!-- <button id="addButton">추가</button> -->
+         <button id="addTodoButton" type="button" data-toggle="modal" data-target="#myModal">추가</button>
+            <div>
+                <input type="checkbox">
+                <span>sample</span>
+                <button id="modButton" type="button" data-toggle="modal" data-target="#myModal">수정</button>
+                <button>삭제</button>
+            </div>
+    </div>
+</div>
+<!-- 부트스트랩의 모달 창을 사용할려면 아래의 class 이름들을 그대로 사용해야 한다. 변경하면 모양이 달라진다.-->
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog"> <!-- 사용자 지정 부분① : id명 -->
+    <div class="modal-dialog">
+    
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h4 class="modal-title">모달 창 타이틀</h4> <!-- 사용자 지정 부분② : 타이틀 -->
+        </div>
+        <div class="modal-body">
+          <p>여기에 필요한 텍스트 메시지 넣기</p> <!-- 사용자 지정 부분③ : 텍스트 메시지 -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="modal fade" id="myModal" role="dialog"> <!-- 사용자 지정 부분① : id명 -->
+    <div class="modal-dialog">
+    
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h4 class="modal-title">모달 창 타이틀</h4> <!-- 사용자 지정 부분② : 타이틀 -->
+        </div>
+        <div class="modal-body">
+          <p>여기에 필요한 텍스트 메시지 넣기</p> <!-- 사용자 지정 부분③ : 텍스트 메시지 -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+    <div class="container">
+        <h1>TODAY <button id="emojiBtn">😊</button> </h1>
+        <!-- <input type="text" id="todoInput" placeholder="오늘의 한 줄"> -->
+        <div class="width_container">
+        <textarea name="daily" style="resize: none;" id="todoInput" rows="4" placeholder="오늘의 한 줄"></textarea>
+        <button id="addButton">+</button>
+        <ul id="todoList"></ul>
+      </div>
+    </div>
+</body>
+</html>
